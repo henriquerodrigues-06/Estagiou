@@ -22,3 +22,12 @@ Ainda estamos construindo e evoluindo, mas o núcleo do aplicativo gira em torno
 - **Back-end:** Node.js / Express
 - **Banco de Dados:** MongoDB
 - **Design:** Figma
+
+## 🖥️Como rodar o projeto localmente
+
+- Faça o clone do repositório para a sua máquina.
+​- Acesse a pasta raiz do projeto pelo terminal.
+​- Instale todas as dependências necessárias executando o comando de instalação de pacotes:
+                     (- npm install -)   
+​Inicie o servidor de desenvolvimento para visualizar a aplicação:
+                     (- npm run dev -)
