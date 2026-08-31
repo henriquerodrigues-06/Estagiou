@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+  --unicesusc-bordo: #5C2235;
+  --unicesusc-vermelho: #C22A22;
+  --unicesusc-cinza: #CFD2D3;
+  --unicesusc-chumbo: #51534a;
+  --branco: #FFFFFF;
+  --fundo-app: #F8F9FA;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--fundo-app);
+  color: #111;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 80px;  /* Prepara a tela para não sobrepor o conteúdo com a navbar fixa inferior */
+}
+
+h1, h2, h3, .font-title {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+}
