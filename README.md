@@ -25,9 +25,14 @@ Ainda estamos construindo e evoluindo, mas o núcleo do aplicativo gira em torno
 
 ## 🖥️Como rodar o projeto localmente
 
-- Faça o clone do repositório para a sua máquina.
-​- Acesse a pasta raiz do projeto pelo terminal.
-​- Instale todas as dependências necessárias executando o comando de instalação de pacotes:
-                     (- npm install -)   
-​Inicie o servidor de desenvolvimento para visualizar a aplicação:
-                     (- npm run dev -)
+- Faça o clone do repositório para a sua máquina  
+`git clone https://github.com/henriquerodrigues-06/Estagiou.git`
+
+- Acesse a pasta raiz do projeto pelo terminal.
+`cd Estagiou`
+
+- Instale todas as dependências necessárias executando o comando de instalação de pacotes:  
+`npm install` 
+
+- Inicie o servidor de desenvolvimento para visualizar a aplicação:  
+`npm run dev`
