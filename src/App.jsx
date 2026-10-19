@@ -6,6 +6,7 @@ import BarraNav from './components/BarraNav';
 import Home from './pages/Home';
 import Cadastrar from './pages/Cadastrar';
 import Perfil from './pages/Perfil';
+import DetalhesVaga from './pages/DetalhesVaga';
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/cadastrar" element={<Cadastrar />} />
         <Route path="/perfil" element={<Perfil />} />
+        <Route path="/vaga/:id" element={<DetalhesVaga />} />
       </Routes>
       <BarraNav />
     </BrowserRouter>

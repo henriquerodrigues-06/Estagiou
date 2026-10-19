@@ -1,4 +1,4 @@
-import { User, Mail, Hash, Phone, Pencil } from 'lucide-react';
+import { User, Mail, Hash, Phone } from 'lucide-react';
 
 export default function Perfil() {
   return (
@@ -48,13 +48,6 @@ export default function Perfil() {
               <Phone size={18} color="var(--unicesusc-bordo)" />
               (48) 98877-6655
             </div>
-          </div>
-
-          <div className="pt-3 mt-2" style={{ borderTop: '1px solid var(--unicesusc-cinza)' }}>
-            <button className="btn w-100 d-flex align-items-center justify-content-center gap-2 py-2" style={{ color: 'var(--unicesusc-bordo)', border: '1px solid var(--unicesusc-bordo)', borderRadius: '8px', fontWeight: '600' }}>
-              <Pencil size={18} />
-              Editar Perfil
-            </button>
           </div>
 
         </div>
