@@ -3,6 +3,20 @@ import { PlusCircle, X } from 'lucide-react';
 import Card from '../components/Card.jsx';
 import { salvarVaga, listarVagas, excluirVaga } from '../services/vagasService.js';
 
+const STORAGE_KEY = 'minhasVagas';
+
+const seedData = [
+  {
+    id: 3,
+    titulo: 'Estagiário de Marketing',
+    cargo: 'Assistente de Mídias',
+    empresa: 'Agência Criativa',
+    curso: 'Publicidade e Propaganda',
+    bolsa: '1.000,00',
+    modelo: 'Remoto'
+  }
+];
+
 export default function Cadastrar() {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
@@ -30,7 +44,18 @@ export default function Cadastrar() {
   }, []);
 
   const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    if (errors[name]) setErrors({ ...errors, [name]: '' });
+  };
+
+  const validate = () => {
+    const newErrors = {};
+    ['titulo', 'cargo', 'empresa', 'localizacao', 'cursos', 'competencias', 'bolsa', 'cargaHoraria'].forEach(field => {
+      if (!formData[field] || !formData[field].trim()) newErrors[field] = 'Campo obrigatório';
+    });
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   // 2. Evento disparado ao clicar em "Salvar Vaga".
@@ -104,10 +129,10 @@ export default function Cadastrar() {
       ) : (
         <>
           <div className="d-flex justify-content-between align-items-center mb-4">
-            <h2 className="font-title m-0" style={{ color: 'var(--unicesusc-bordo)', fontSize: '24px' }}>
-              Nova Vaga
+             <h2 className="font-title m-0" style={{ color: 'var(--unicesusc-bordo)', fontSize: '24px' }}>
+              {editingId === null ? 'Nova Vaga' : 'Editar Vaga'}
             </h2>
-            <button onClick={() => setIsFormOpen(false)} className="btn btn-link text-secondary p-0">
+            <button onClick={() => { setIsFormOpen(false); setEditingId(null); setFormData(emptyForm); setErrors({}); }} className="btn btn-link text-secondary p-0">
               <X size={28} />
             </button>
           </div>
@@ -122,8 +147,8 @@ export default function Cadastrar() {
             <input type="text" className="form-control mb-2" name="cursos" value={formData.cursos} onChange={handleInputChange} placeholder="Curso(s) exigido(s) *" required />
             <textarea className="form-control mb-2" name="competencias" value={formData.competencias} onChange={handleInputChange} placeholder="Competências (Hard e Soft Skills) *" required />
             <div className="d-flex gap-2 mb-2">
-              <input type="text" className="form-control" name="bolsa" value={formData.bolsa} onChange={handleInputChange} placeholder="Bolsa-auxílio *" required />
-              <input type="text" className="form-control" name="cargaHoraria" value={formData.cargaHoraria} onChange={handleInputChange} placeholder="Carga horária *" required />
+              <input type="text" className="form-control" name="bolsa" value={formData.bolsa} onChange={handleInputChange} placeholder="Bolsa-auxílio *" required style={errors.bolsa ? { borderColor: 'var(--unicesusc-vermelho)' } : {}} />
+              <input type="text" className="form-control" name="cargaHoraria" value={formData.cargaHoraria} onChange={handleInputChange} placeholder="Carga horária *" required style={errors.cargaHoraria ? { borderColor: 'var(--unicesusc-vermelho)' } : {}} />
             </div>
             <select className="form-select mb-4" name="modelo" value={formData.modelo} onChange={handleInputChange} required>
               <option value="Presencial">Presencial</option>

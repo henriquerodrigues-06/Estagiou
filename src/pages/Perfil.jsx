@@ -1,6 +1,63 @@
 import { User, Mail, Hash, Phone } from 'lucide-react';
 
 export default function Perfil() {
+  const [isEditing, setIsEditing] = useState(false);
+
+  const [perfil, setPerfil] = useState(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved ? JSON.parse(saved) : seedData;
+    } catch {
+      return seedData;
+    }
+  });
+
+  const [formData, setFormData] = useState(perfil);
+
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(perfil));
+  }, [perfil]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: '' });
+    }
+  };
+
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.nome.trim()) newErrors.nome = 'Nome é obrigatório';
+    if (!formData.email.trim()) newErrors.email = 'E-mail é obrigatório';
+    if (!formData.matricula.trim()) newErrors.matricula = 'Matrícula é obrigatória';
+    if (!formData.contato.trim()) newErrors.contato = 'Contato é obrigatório';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleEdit = () => {
+    setFormData(perfil);
+    setErrors({});
+    setIsEditing(true);
+  };
+
+  const handleCancel = () => {
+    setFormData(perfil);
+    setErrors({});
+    setIsEditing(false);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+    setPerfil({ ...formData });
+    setIsEditing(false);
+    setErrors({});
+  };
+
   return (
     <div className="container mt-4">
       <h2 className="font-title mb-4" style={{ color: 'var(--unicesusc-bordo)', fontSize: '24px' }}>
