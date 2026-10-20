@@ -2,7 +2,7 @@ import { User, Mail, Hash, Phone, Pencil } from 'lucide-react';
 
 export default function Perfil() {
   return (
-    <div className="container mt-4">
+    <div className="container mt-4 mb-5 pb-4">
       <h2 className="font-title mb-4" style={{ color: 'var(--unicesusc-bordo)', fontSize: '24px' }}>
         Meu Perfil
       </h2>
@@ -51,7 +51,12 @@ export default function Perfil() {
           </div>
 
           <div className="pt-3 mt-2" style={{ borderTop: '1px solid var(--unicesusc-cinza)' }}>
-            <button className="btn w-100 d-flex align-items-center justify-content-center gap-2 py-2" style={{ color: 'var(--unicesusc-bordo)', border: '1px solid var(--unicesusc-bordo)', borderRadius: '8px', fontWeight: '600' }}>
+            <button 
+              type="button"
+              className="btn w-100 d-flex align-items-center justify-content-center gap-2 py-2" 
+              style={{ color: 'var(--unicesusc-bordo)', border: '1px solid var(--unicesusc-bordo)', borderRadius: '8px', fontWeight: '600' }}
+              onClick={() => window.alert("Funcionalidade de edição de perfil será implementada em atualizações futuras.")}
+            >
               <Pencil size={18} />
               Editar Perfil
             </button>

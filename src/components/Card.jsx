@@ -16,7 +16,7 @@ export default function Card({ vaga, onEdit, onDelete, showActions = false }) {
                 <div className="d-flex flex-column gap-2" style={{ fontSize: '12px', color: '#666' }}>
                     <div className="d-flex align-items-center gap-2">
                         <GraduationCap size={14} />
-                        <span>{vaga.curso}</span>
+                        <span>{vaga.cursos}</span>
                     </div>
                     <div className="d-flex align-items-center gap-2">
                         <Wallet size={14} />
