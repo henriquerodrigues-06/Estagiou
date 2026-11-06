@@ -4,4 +4,6 @@ import { defineConfig } from "eslint/config";
 
 export default defineConfig([
   { files: ["**/*.{js,mjs,cjs}"], plugins: { js }, extends: ["js/recommended"], languageOptions: { globals: globals.node } },
+  // Arquivos de teste usam as globais do Jest
+  { files: ["tests/**/*.{js,mjs,cjs}"], languageOptions: { globals: globals.jest } },
 ]);

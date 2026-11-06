@@ -1,16 +1,17 @@
 {
-  "name": "backend",
+  "name": "estagiou-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "API RESTful do Estagiou - conexão de alunos a vagas de estágio",
+  "main": "server.js",
   "scripts": {
     "test": "jest --coverage",
     "test:watch": "jest --watchAll",
-    "dev": "nodemon src/app.js",
-    "start": "node src/app.js",
+    "coverage": "jest --coverage",
+    "dev": "nodemon server.js",
+    "start": "node server.js",
     "lint": "eslint"
   },
-  "keywords": [],
+  "keywords": ["api", "rest", "estagio", "unicesusc"],
   "author": "",
   "license": "ISC",
   "type": "module",
@@ -18,13 +19,19 @@
     "cors": "^2.8.6",
     "dotenv": "^18.0.8",
     "express": "^5.3.0",
-    "mongoose": "^9.11.3"
+    "mongoose": "^9.11.3",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.25.0",
+    "@babel/preset-env": "^7.25.0",
     "@eslint/js": "^10.0.1",
+    "babel-jest": "^30.5.2",
     "eslint": "^10.14.0",
     "globals": "^17.14.0",
     "jest": "^30.5.2",
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.14",
+    "supertest": "^7.0.0"
   }
 }
