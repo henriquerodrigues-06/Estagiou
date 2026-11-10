@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
 import estagiosRoutes from './routes/estagios.routes.js';
-import swaggerSpec from './swagger.js';
+import swaggerSpec from './config/swagger.js';
 import notFound from './middlewares/notFound.js';
 import errorHandler from './middlewares/errorHandler.js';
 

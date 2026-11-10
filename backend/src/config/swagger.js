@@ -1,6 +1,5 @@
 import swaggerJsdoc from 'swagger-jsdoc';
 
-// Configuração da documentação da API (OpenAPI 3.0).
 const options = {
   definition: {
     openapi: '3.0.0',
@@ -13,8 +12,7 @@ const options = {
       { url: 'http://localhost:3000', description: 'Servidor local' }
     ]
   },
-  // O Swagger lê comentários JSDoc nestes arquivos para montar a documentação.
-  apis: ['./src/routes/*.js', './src/controllers/*.js']
+  apis: ['./src/docs/*.js']
 };
 
 const swaggerSpec = swaggerJsdoc(options);
