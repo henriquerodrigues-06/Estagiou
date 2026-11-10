@@ -5,9 +5,9 @@ const router = Router();
 
 router.get('/', estagiosController.getAll);
 
-router.get('/listar/:id', estagiosController.getVagaById);
-
 router.get('/listar/termo', estagiosController.getVagaByTerm);
+
+router.get('/listar/:id', estagiosController.getVagaById);
 
 router.post('/cadastrar', estagiosController.createVaga);
 

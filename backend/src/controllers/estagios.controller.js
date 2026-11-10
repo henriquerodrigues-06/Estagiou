@@ -15,7 +15,7 @@ function montarDadosVaga(campos) {
     competencias: sanitizeUtil.sanitizeFormattedTerm(campos.competencias),
     bolsa: sanitizeUtil.sanitizeCurrency(campos.bolsa),
     cargaHoraria: sanitizeUtil.sanitizeTime(campos.cargaHoraria),
-    modelo: sanitizeUtil.sanitizeTerm(campos.modelo),
+    modelo: sanitizeUtil.sanitizeFormattedTerm(campos.modelo),
     periodo: sanitizeUtil.sanitizeTerm(campos.periodo),
     transporte: sanitizeUtil.sanitizeCurrency(campos.transporte),
     alimentacao: sanitizeUtil.sanitizeCurrency(campos.alimentacao),
@@ -96,7 +96,7 @@ const updateVaga = asyncHandler(async (req, res) => {
   if (updates.competencias) dadosAtualizados.competencias = sanitizeUtil.sanitizeFormattedTerm(updates.competencias);
   if (updates.bolsa) dadosAtualizados.bolsa = sanitizeUtil.sanitizeCurrency(updates.bolsa);
   if (updates.cargaHoraria) dadosAtualizados.cargaHoraria = sanitizeUtil.sanitizeTime(updates.cargaHoraria);
-  if (updates.modelo) dadosAtualizados.modelo = sanitizeUtil.sanitizeTerm(updates.modelo);
+  if (updates.modelo) dadosAtualizados.modelo = sanitizeUtil.sanitizeFormattedTerm(updates.modelo);
   if (updates.periodo) dadosAtualizados.periodo = sanitizeUtil.sanitizeTerm(updates.periodo);
   if (updates.transporte) dadosAtualizados.transporte = sanitizeUtil.sanitizeCurrency(updates.transporte);
   if (updates.alimentacao) dadosAtualizados.alimentacao = sanitizeUtil.sanitizeCurrency(updates.alimentacao);

@@ -15,15 +15,12 @@ const sanitizeTerm = (term) => {
 
 const sanitizeFormattedTerm = (term) => {
     if (!term) return '';
-
     const text = String(term);
-
     const cleanTerm = text
         .normalize('NFC')
-        .replace(/[^\p{L}\p{N}\s]/gu, '')
-        .replace(/\s+/g, ' ')
-        .trim()
-
+        .replace(/[^\p{L}\p{N}\s.,;:!?'"()\/_+-]/gu, '')
+        .replace(/[ \t]+/g, ' ')
+        .trim();
     return cleanTerm;
 };
 
@@ -41,15 +38,12 @@ const sanitizeCurrency = (value) => {
 
 const sanitizeTime = (time) => {
     if (!time) return '';
-
     const text = String(time);
-
     const cleanTime = text
         .normalize('NFC')
-        .replace(/[^\p{L}\p{N}\s:]/gu, '')
+        .replace(/[^\p{L}\p{N}\s:\/]/gu, '')
         .replace(/\s+/g, ' ')
         .trim();
-
     return cleanTime;
 };
 
