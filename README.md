@@ -20,7 +20,7 @@ Ainda estamos construindo e evoluindo, mas o núcleo do aplicativo gira em torno
 
 - **Front-end:** React / Vite
 - **Back-end:** Node.js / Express
-- **Banco de Dados:** MongoDB
+- **Banco de Dados:** MongoDB / Mongoose
 - **Design:** Figma
 
 ## 🖥️Como rodar o projeto localmente
@@ -28,8 +28,17 @@ Ainda estamos construindo e evoluindo, mas o núcleo do aplicativo gira em torno
 - Faça o clone do repositório para a sua máquina  
 `git clone https://github.com/henriquerodrigues-06/Estagiou.git`
 
-- Acesse a pasta raiz do projeto pelo terminal.
-`cd Estagiou`
+1. Acesse a pasta do front-end do projeto pelo terminal.  
+`cd Estagiou/frontend`
+
+- Instale todas as dependências necessárias executando o comando de instalação de pacotes:  
+`npm install` 
+
+- Inicie o servidor de desenvolvimento para visualizar a aplicação:  
+`npm run dev`
+
+2. Acesse a pasta do back-end do projeto pelo terminal.  
+`cd Estagiou/backend`
 
 - Instale todas as dependências necessárias executando o comando de instalação de pacotes:  
 `npm install` 
