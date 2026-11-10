@@ -1,22 +1,44 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Briefcase, MapPin, Wallet, Clock, GraduationCap, CheckCircle, Calendar, Bus, Utensils, Languages } from 'lucide-react';
+import { ArrowLeft, Briefcase, MapPin, Wallet, Clock, GraduationCap, CheckCircle, Calendar, Bus, Utensils, Languages, Loader2 } from 'lucide-react';
 import { buscarVagaPorId } from '../services/vagasService.js';
 
 export default function DetalhesVaga() {
-  const { id } = useParams(); // Pega o ID da URL.
+  const { id } = useParams();
   const navigate = useNavigate();
   const [vaga, setVaga] = useState(null);
+  const [carregando, setCarregando] = useState(true);
   const [candidatou, setCandidatou] = useState(false);
 
   useEffect(() => {
-    const dados = buscarVagaPorId(id);
-    if (dados) {
-      setVaga(dados);
-    } else {
-      navigate('/'); // Se a vaga não existir ou for apagada, volta pra Home.
-    }
+    const obterVaga = async () => {
+      try {
+        setCarregando(true);
+        const dados = await buscarVagaPorId(id);
+        if (dados) {
+          setVaga(dados);
+        } else {
+          navigate('/');
+        }
+      } catch (err) {
+        console.error("Erro ao obter detalhes da vaga:", err);
+        navigate('/');
+      } finally {
+        setCarregando(false);
+      }
+    };
+
+    obterVaga();
   }, [id, navigate]);
+
+  if (carregando) {
+    return (
+      <div className="container mt-5 text-center p-5">
+        <Loader2 className="spinner-border text-danger" style={{ width: '2rem', height: '2rem' }} />
+        <p className="text-muted mt-2">A carregar detalhes da vaga...</p>
+      </div>
+    );
+  }
 
   if (!vaga) return null;
 
@@ -54,10 +76,10 @@ export default function DetalhesVaga() {
 
           <div className="d-flex align-items-center gap-3"><Wallet size={18} color="var(--unicesusc-cinza)" /> R$ {vaga.bolsa}</div>
 
-          {vaga.transporte && (
+          {vaga.transporte > 0 && (
             <div className="d-flex align-items-center gap-3"><Bus size={18} color="var(--unicesusc-cinza)" /> R$ {vaga.transporte}</div>
           )}
-          {vaga.alimentacao && (
+          {vaga.alimentacao > 0 && (
             <div className="d-flex align-items-center gap-3"><Utensils size={18} color="var(--unicesusc-cinza)" /> R$ {vaga.alimentacao}</div>
           )}
           {vaga.idiomas && (
